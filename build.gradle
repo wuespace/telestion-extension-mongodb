@@ -17,6 +17,15 @@ repositories {
     }
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+javadoc {
+    options.addBooleanOption('html5', true)
+}
+
 publishing {
     repositories {
         maven {
