@@ -61,18 +61,31 @@ loadScripts(document, 'script');</script>
 <div class="block">Listener that collects all incoming data configured in listeningAddresses and redirects them to be saved to the
  MongoDatabaseService.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/DbRequest.html" title="class in de.wuespace.telestion.extension.mongodb">DbRequest</a></div>
+<div class="col-first odd-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/DataOperation.html" title="class in de.wuespace.telestion.extension.mongodb">DataOperation</a></div>
+<div class="col-last odd-row-color all-classes-table-tab2 all-classes-table">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/DataRequest.html" title="class in de.wuespace.telestion.extension.mongodb">DataRequest</a></div>
+<div class="col-last even-row-color all-classes-table-tab2 all-classes-table">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/DataService.html" title="class in de.wuespace.telestion.extension.mongodb">DataService</a></div>
 <div class="col-last odd-row-color all-classes-table-tab2 all-classes-table">
+<div class="block">DataService is a verticle which is the interface to a underlying database implementation.</div>
+</div>
+<div class="col-first even-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/DbRequest.html" title="class in de.wuespace.telestion.extension.mongodb">DbRequest</a></div>
+<div class="col-last even-row-color all-classes-table-tab2 all-classes-table">
 <div class="block">Record to provide the structure of a database request.</div>
 </div>
-<div class="col-first even-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/DbResponse.html" title="class in de.wuespace.telestion.extension.mongodb">DbResponse</a></div>
-<div class="col-last even-row-color all-classes-table-tab2 all-classes-table">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/MongoDatabaseService.html" title="class in de.wuespace.telestion.extension.mongodb">MongoDatabaseService</a></div>
-<div class="col-last odd-row-color all-classes-table-tab2 all-classes-table">
+<div class="col-first odd-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/DbResponse.html" title="class in de.wuespace.telestion.extension.mongodb">DbResponse</a></div>
+<div class="col-last odd-row-color all-classes-table-tab2 all-classes-table">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/MongoDatabaseService.html" title="class in de.wuespace.telestion.extension.mongodb">MongoDatabaseService</a></div>
+<div class="col-last even-row-color all-classes-table-tab2 all-classes-table">
 <div class="block">MongoDatabaseService is a verticle which connects to a local running MongoDB-Database and listens for incoming
  database requests to process.</div>
 </div>
-<div class="col-first even-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/PeriodicDataAggregator.html" title="class in de.wuespace.telestion.extension.mongodb">PeriodicDataAggregator</a></div>
+<div class="col-first odd-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/PeriodicDataAggregator.html" title="class in de.wuespace.telestion.extension.mongodb">PeriodicDataAggregator</a></div>
+<div class="col-last odd-row-color all-classes-table-tab2 all-classes-table">
+<div class="block">Verticle periodically querying the database for preconfigured data,
+ publishing the results to a preconfigured outgoing address.</div>
+</div>
+<div class="col-first even-row-color all-classes-table-tab2 all-classes-table"><a href="de/wuespace/telestion/extension/mongodb/PeriodicDataPublisher.html" title="class in de.wuespace.telestion.extension.mongodb">PeriodicDataPublisher</a></div>
 <div class="col-last even-row-color all-classes-table-tab2 all-classes-table">
 <div class="block">Verticle periodically querying the database for preconfigured data,
  publishing the results to a preconfigured outgoing address.</div>
