@@ -6,4 +6,5 @@ This template contains an initialized project structure with configured dependen
 
 To fetch the dependencies locally you need a Github personal access token with `packages:read` rights.
 Either add your github user name and the token as `GITHUB_ACTOR` and `GITHUB_TOKEN` to your environment variables 
-or copy the file `.github.credentials.template` and rename it to `gradle.properties`. Then you can insert the credentials in it.
+or copy the file `gradle.properties.example` and rename it to `gradle.properties`.
+Then you can insert the credentials in it.

@@ -4,7 +4,6 @@ plugins {
 }
 
 group 'de.wuespace.telestion.extension'
-version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -32,7 +31,7 @@ publishing {
     publications {
         gpr(MavenPublication) {
             groupId = 'de.wuespace.telestion.extension'
-            artifactId = 'telestion-extension-mongodb'
+            artifactId = 'mongodb'
             version = System.getenv("VERSION")
 
             from components.java
@@ -49,6 +48,7 @@ dependencies {
     implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '6.6'
 
     implementation "io.vertx:vertx-core:4.1.2"
+    implementation "io.vertx:vertx-mongo-client:4.1.2"
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'

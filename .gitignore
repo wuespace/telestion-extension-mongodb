@@ -1,6 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea
-.github.credentials
 
 ### Kotlin template
 # Compiled class file
@@ -294,14 +292,15 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-
 ### Manual Additions ###
 # Eclipse files
 *.classpath
 *.project
 
-# Project Files
-modules/telestion-mavlink/src/main/messages/org/telestion/mavlink/
+# IDE configs
+.idea
+.vscode
 
-# Python things
-venv/
+# GH Token
+gradle.properties
+.github.credentials
