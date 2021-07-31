@@ -144,6 +144,74 @@ and tries to extract the `imu.acc.x` property which can be deeply nested.
 After it gathered all required information, it publishes the data onto the `aggregated-imu.acc.x` eventbus address.
 You can configure the aggregation rate via the `rate` property. The rate is represented as aggregations per second.
 
+## Setup MongoDB
+
+If you use our [Project Template](https://github.com/wuespace/telestion-project-template),
+you can easily add MongoDB to your build and deploy pipeline.
+
+Open the `docker-compose.yml` in the `application` folder and add the `mongodb` service:
+
+```yaml
+version: "3.9"
+
+services:
+  mongodb:
+    # most recent and stable version off mongodb
+    image: "mongo:4"
+    profiles: ["devel-native", "devel-docker", "prod"]
+    restart: always
+    ports:
+      # passthrough mongodb listen port to host for debugging
+      - "127.0.0.1:27017:27017"
+    volumes:
+      # store database data for a later restart
+      - type: volume
+        source: mongodb-data
+        target: "/data/db"
+    # environment:
+    #   # mongodb authentication
+    #   MONGO_INITDB_ROOT_USERNAME: 'root'
+    #   MONGO_INITDB_ROOT_PASSWORD: '12345'
+    # bind to open ip to allow incoming connections from other network devices
+    command: "--bind_ip 0.0.0.0"
+
+  telestion-devel:
+    image: "telestion-devel"
+    profiles: ["devel-docker"]
+    # ...
+```
+
+Do not forget to also update the `production.yml`:
+
+```yaml
+version: "3.7"
+
+services:
+  mongodb:
+    # most recent and stable version off mongodb
+    image: "mongo:4"
+    restart: always
+    ports:
+      # passthrough mongodb listen port to host for debugging
+      - "127.0.0.1:27017:27017"
+    volumes:
+      # store database data for a later restart
+      - type: volume
+        source: mongodb-data
+        target: "/data/db"
+    # environment:
+    #   # mongodb authentication
+    #   MONGO_INITDB_ROOT_USERNAME: 'root'
+    #   MONGO_INITDB_ROOT_PASSWORD: '12345'
+    # bind to open ip to allow incoming connections from other network devices
+    command: "--bind_ip 0.0.0.0"
+
+  telestion:
+    image: "ghcr.io/wuespace/telestion-project-daedalus2:latest"
+    restart: always
+    # ...
+```
+
 ### Contributing
 
 For the documentation on contributing to this repository,
