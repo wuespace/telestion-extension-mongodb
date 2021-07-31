@@ -1,4 +1,13 @@
-# 0.2.0 (2021-07-31)
+# [0.3.0](https://github.com/wuespace/telestion-extension-mongodb/compare/v0.2.0...v0.3.0) (2021-07-31)
+
+
+### Features
+
+* Import missing parts from https://github.com/wuespace/telestion-core/pull/273 ([4a2f543](https://github.com/wuespace/telestion-extension-mongodb/commit/4a2f5435430dd6f11b96a1b88b781a85e54484e1))
+
+
+
+# [0.2.0](https://github.com/wuespace/telestion-extension-mongodb/compare/7dc3b9ef624f006fbd60347a08998acc4f52b4a7...v0.2.0) (2021-07-31)
 
 
 ### Bug Fixes
