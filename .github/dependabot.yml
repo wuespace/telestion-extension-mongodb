@@ -4,9 +4,18 @@
 # https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+registries:
+  maven-github:
+    type: maven-repository
+    url: https://maven.pkg.github.com/wuespace
+    username: wuespace-admin
+    password: ${{ secrets.READ_PACKAGES }}
+
 updates:
   - package-ecosystem: 'gradle'
     directory: '/'
+    registries:
+      - 'maven-github'
     schedule:
       interval: 'weekly'
     commit-message:
