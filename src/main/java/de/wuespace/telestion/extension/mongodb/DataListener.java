@@ -1,74 +1,40 @@
 package de.wuespace.telestion.extension.mongodb;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.wuespace.telestion.api.config.Config;
-import de.wuespace.telestion.api.message.JsonMessage;
+import de.wuespace.telestion.api.verticle.TelestionConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
 import de.wuespace.telestion.services.message.Address;
-import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Promise;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Listener that collects all incoming data configured in listeningAddresses and redirects them to be saved to the
  * MongoDatabaseService.
+ *
+ * @author Jan Tischhöfer, Ludwig Richter
  */
-public final class DataListener extends AbstractVerticle {
-    private static record Configuration(@JsonProperty List<String> listeningAddresses) {
-        private Configuration() {
-            this(null);
-        }
-    }
+@SuppressWarnings("unused")
+public class DataListener extends TelestionVerticle<DataListener.Configuration> implements WithEventBus {
 
-    @Override
-    public void start(Promise<Void> startPromise) {
-        config = Config.get(forcedConfig, config(), Configuration.class);
-        registerConsumers();
-        startPromise.complete();
-    }
+	public record Configuration(
+			@JsonProperty List<String> listeningAddresses
+	) implements TelestionConfiguration {
+		public Configuration() {
+			this(Collections.emptyList());
+		}
+	}
 
-    @Override
-    public void stop(Promise<Void> stopPromise) {
-        stopPromise.complete();
-    }
+	@Override
+	public void onStart() {
+		getConfig().listeningAddresses().forEach(
+				address -> register(address, message -> publish(SAVE_ADDRESS, message.body()))
+		);
+	}
 
-    /**
-     * This constructor supplies default options.
-     *
-     * @param listeningAddresses List of addresses that should be saved
-     */
-    public DataListener(List<String> listeningAddresses) {
-        this.forcedConfig = new Configuration(listeningAddresses);
-    }
-
-    /**
-     * If this constructor is used, settings have to be specified in the config file.
-     */
-    public DataListener() {
-        this.forcedConfig = null;
-    }
-
-    private final Logger logger = LoggerFactory.getLogger(DataListener.class);
-    private final Configuration forcedConfig;
-    private Configuration config;
-
-    /**
-     * Mongo Database Service save address
-     */
-    private final String save = Address.incoming(MongoDatabaseService.class, "save");
-
-    /**
-     * Function to register consumers to the eventbus.
-     */
-    private void registerConsumers() {
-        config.listeningAddresses().forEach(address -> {
-            vertx.eventBus().consumer(address, document -> {
-                JsonMessage.on(JsonMessage.class, document, msg -> {
-                    vertx.eventBus().publish(save, msg.json());
-                });
-            });
-        });
-    }
+	/**
+	 * Mongo Database Service save address.
+	 */
+	private static final String SAVE_ADDRESS = Address.incoming(MongoDatabaseService.class, "save");
 }
