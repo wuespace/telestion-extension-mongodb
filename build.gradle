@@ -42,7 +42,7 @@ publishing {
 
 dependencies {
     implementation 'de.wuespace.telestion:telestion-api:0.9.0'
-    implementation 'de.wuespace.telestion:telestion-services:0.8.1'
+    implementation 'de.wuespace.telestion:telestion-services:0.9.0'
 
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.11'
