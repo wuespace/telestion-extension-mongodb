@@ -49,7 +49,7 @@ dependencies {
     implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '7.2'
 
     implementation "io.vertx:vertx-core:4.3.7"
-    implementation "io.vertx:vertx-mongo-client:4.3.7"
+    implementation "io.vertx:vertx-mongo-client:4.3.8"
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
